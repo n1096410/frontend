@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <title>GTR東瀛戰神</title>
     <link rel="stylesheet" href="gtr.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   </head>
   <body>
     <header>
       <h1>GTR東瀛戰神</h1>
+      <div id="time" class="timestyle"></div>
         <ul id="ul01">
           <li id="li01"><a href="#link1">介紹</a></li>
-          <li id="li01"><a href="#link2">內裝</a></li>
-          <li id="li01"><a href="#link3">規格</a></li>
-          <li id="li01"><a href="#link4">價錢</a></li>
-          <li id="li01"><a href="https://www3.nissan.co.jp/vehicles/new/gt-r.html">官網(日本)</a></li>
+          <li id="li02"><a href="#link2">內裝</a></li>
+          <li id="li03"><a href="#link3">規格</a></li>
+          <li id="li04"><a href="#link4">價錢</a></li>
+          <li id="li05"><a href="https://www3.nissan.co.jp/vehicles/new/gt-r.html">官網(日本)</a></li>
         </ul>
     </header>
     <main>
@@ -35,11 +38,23 @@
       </section>
       <section>
         <h2 id="link2">內裝</h2>
-        <div class="imgex01">
+        <script src="../網頁期中期末/nav.js"></script>
+        <div class="slideshow-container">
+          <div class="mySlideshows">
+              <img src="../網頁期中期末/images/inside01.jpg" >
+          </div>	  
+          <div class="mySlideshows">
+              <img src="../網頁期中期末/images/inside02.jpg" >
+          </div>	  
+          <div class="mySlideshows">
+              <img src="../網頁期中期末/images/inside03.jpg" >
+          </div>
+        </div>
+        <!-- <div class="imgex01">
         <img src="../網頁期中期末/images/inside01.jpg" style="height: 200px;width: 300px;" >
         <img src="../網頁期中期末/images/inside02.jpg" style="height: 200px;width: 300px;" >
         <img src="../網頁期中期末/images/inside03.jpg" style="height: 200px;width: 300px;" >
-        </div>
+        </div> -->
       </section>
       <h2 id="link3">規格</h2>
       <table width="410" border="2" class="table001">
@@ -92,22 +107,105 @@
         </tbody>
       </table>
 <h2 id="link4">價錢</h2>
-<table width="300" border="2" align="center" class="table001">
-  <tbody>
-    <tr>
-      <td width="117" align="center">3.8 Premium Edition</td>
-      <td width="117" align="center">3.8 Black Premium Edition</td>
-    </tr>
-    <tr>
-      <td align="center">625萬</td>
-      <td align="center">665萬</td>
-    </tr>
-  </tbody>
-</table>
-<p>&nbsp;</p>
+<div class="angular001" ng-app="price01" ng-controller="pricectrl">
+  <div class="position01">
+    <button ng-click="myFunc()" id="pricebutton">要看價錢請點我</button>
+  </div>
+
+  <div ng-show="showpri">
+
+    <table width="300" border="2" align="center" class="table001">
+      <tbody>
+        <tr>
+          <td width="117" align="center">3.8 Premium Edition</td>
+          <td width="117" align="center">3.8 Black Premium Edition</td>
+        </tr>
+        <tr>
+          <td align="center">625萬</td>
+          <td align="center">665萬</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  <div>
+    <img src="../網頁期中期末/images/up.png" id="gotop" alt="回到頂端">
+  </div>
     </main>
     <footer>
       <p><strong>版權聲明 2023 Nissan</strong></p>
   </footer>
   </body>
+  <script>
+
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName('mySlideshows');
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = 'none';  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = 'block';  
+  setTimeout(showSlides, 3000); //每3秒自動更新
+}
+
+     $('#gotop').click(function (e) {
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: 0  
+    }, 500);
+  });
+
+  $('#li01').click(function (e) {
+  e.preventDefault();
+  $('html, body').animate({
+    scrollTop: $('#link1').offset().top  
+  }, 500);
+});
+
+  $('#li02').click(function (e) {
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: $('#link2').offset().top  
+    }, 500);
+  });
+
+  $('#li03').click(function (e) {
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: $('#link3').offset().top  
+    }, 500);
+  });
+
+  $('#li04').click(function (e) {
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: $('#link4').offset().top  
+    }, 500);
+  });
+    
+    function time(){
+    var dateAndTime = document.getElementById('time');
+
+    var currentTime = new Date();
+
+    dateAndTime.innerHTML = "現在時間"+currentTime.toLocaleTimeString();
+  }
+    setInterval(function(){
+      time()},1000
+      )
+
+  var app = angular.module('price01', []);
+  app.controller('pricectrl', function($scope) {
+      $scope.showpri = false;
+      $scope.myFunc = function() {
+          $scope.showpri = !$scope.showpri;
+      }
+  });
+
+  </script>
 </html>

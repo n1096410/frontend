@@ -12,6 +12,16 @@
     align-items: center;
     justify-content: center;
     }
+    .timestyle {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 5%;
+      font-size: 20px;
+      text-align: center;
+      color: white;
+      
+    }
     #ul01 {
     display: flex;
     background-color: black;
@@ -21,12 +31,12 @@
     padding: 0;
     margin: 0;
     }
-    #li01 {  
+    #ul01 li {  
     list-style: none;
     height: 25px;
     margin-left: 60px;
     }
-    #li01 a:hover {
+    #ul01 li a:hover {
     color: red;
    
     }
@@ -34,6 +44,18 @@
     color: red;
     text-align: center;
     }
+    .slideshow-container{
+      width: 80%;
+      height: 50%;
+      position: relative;
+      left: 10%;
+      right: 10%;
+    }
+    .slideshow-container img{
+      width: 100%;
+      height: 100%;
+    }
+
     .pex01{
         color: white;
         font-size: 18px;
@@ -58,10 +80,25 @@
       transition-duration: 1s;
       transform: rotate(360deg);
     }
+    .position01 {
+      display: flex;
+      justify-content: center;
+    }
+    #pricebutton{
+      
+
+    }
     .table001 {
     margin: 0 auto;
     border-color: white;
     color: white;
+    }
+    #gotop {
+      height: 50px;
+      width: 50px;
+      position: fixed;
+      bottom: 80px;
+      right: 30px;
     }
     footer {
     height: 100px;
